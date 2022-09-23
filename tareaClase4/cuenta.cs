@@ -3,10 +3,14 @@ public enum TipoDeExtraccion
     CajeroHumano=1,
     CajeroAutomatico=2
 }
-public abstract class Cuenta
+public class Cuenta
 {
-    public abstract void insercion(int monto);
-    public abstract void extraccion(int monto, TipoDeExtraccion tipo);
+    public virtual void insercion(int monto){
+
+    }
+    public virtual void extraccion(int monto, TipoDeExtraccion tipo){
+        
+    }
 
 }
 
