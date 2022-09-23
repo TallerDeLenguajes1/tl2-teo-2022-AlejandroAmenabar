@@ -25,7 +25,7 @@ public class CuentaCorrientePesos : Cuenta
             {
                 System.Console.WriteLine("todo ok");
             }else{
-
+                //podria hacer un mecanismo de excepciones aqui
                 System.Console.WriteLine("todo mal");
             }
         }
