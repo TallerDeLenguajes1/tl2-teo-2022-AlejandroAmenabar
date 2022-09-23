@@ -5,27 +5,32 @@ public enum TipoDeExtraccion
 }
 public class Cuenta
 {
-    public virtual void insercion(int monto){
-
+    public float fondos;
+    protected Cuenta()
+    {
+        fondos=0;
     }
-    public virtual void extraccion(int monto, TipoDeExtraccion tipo){
-        
+    protected Cuenta(float x)
+    {
+        fondos = x;
     }
+    public virtual void insercion(int monto)
+    {
+        fondos = fondos + monto;
+    }
+    public virtual void extraccion(int monto, TipoDeExtraccion tipo){}
 
 }
 
 public class CuentaCorrientePesos : Cuenta
 {
-    public float fondos;
-    public override void insercion(int monto) 
-    {
-        // Do something else.
-    }
+    public CuentaCorrientePesos(){}
+    public CuentaCorrientePesos(float x) :base(x) {}
     public override void extraccion(int monto, TipoDeExtraccion tipo)
     {
         if (tipo==TipoDeExtraccion.CajeroAutomatico)
         {
-            if (monto<20000 && monto-fondos<-5000)
+            if (monto<20000 && (fondos-monto)>(-5000))
             {
                 System.Console.WriteLine("todo ok");
             }else{
@@ -37,10 +42,6 @@ public class CuentaCorrientePesos : Cuenta
 }
 public class CuentaCorrienteDolares : Cuenta
 {
-    public override void insercion(int monto) 
-    {
-        // Do something else.
-    }
     public override void extraccion(int monto, TipoDeExtraccion tipo)
     {
         //pepe
@@ -49,10 +50,6 @@ public class CuentaCorrienteDolares : Cuenta
 
 public class cajaAhorroPesos : Cuenta
 {
-    public override void insercion(int monto) 
-    {
-        // Do something else.
-    }
     public override void extraccion(int monto, TipoDeExtraccion tipo)
     {
         //pepe
